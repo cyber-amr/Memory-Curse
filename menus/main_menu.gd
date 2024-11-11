@@ -1,8 +1,11 @@
 extends Node
 
 
+var game_scene := load("res://world/game.tscn")
+
+
 func _on_start() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_packed(game_scene)
 
 
 func _on_options() -> void:
