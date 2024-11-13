@@ -2,6 +2,7 @@ extends Node
 
 
 var game_scene := load("res://world/game.tscn")
+var options_menu : PackedScene = load("res://menus/options_menu.tscn")
 
 
 func _on_start() -> void:
@@ -9,7 +10,8 @@ func _on_start() -> void:
 
 
 func _on_options() -> void:
-	pass # Replace with function body.
+	if !has_node("OptionsMenu"):
+		add_child(options_menu.instantiate())
 
 
 func _on_quit() -> void:
