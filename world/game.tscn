@@ -31,7 +31,13 @@ material = SubResource("StandardMaterial3D_uy40p")
 size = Vector3(10000, 1, 10000)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hl4mw"]
-size = Vector3(10000, 1, 10000)
+size = Vector3(2000, 1, 2000)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_njhnq"]
+size = Vector3(2000, 100, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ircnx"]
+size = Vector3(1, 100, 2000)
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_c2l74")
@@ -57,11 +63,39 @@ script = ExtResource("2_0dvcr")
 environment = SubResource("Environment_u0s1g")
 
 [node name="Terrain" type="StaticBody3D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Terrain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_1v0wt")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_hl4mw")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
+shape = SubResource("BoxShape3D_hl4mw")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, -1000)
+shape = SubResource("BoxShape3D_njhnq")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 1000)
+shape = SubResource("BoxShape3D_njhnq")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000, 50, 0)
+shape = SubResource("BoxShape3D_ircnx")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 50, 0)
+shape = SubResource("BoxShape3D_ircnx")
+metadata/_edit_lock_ = true
