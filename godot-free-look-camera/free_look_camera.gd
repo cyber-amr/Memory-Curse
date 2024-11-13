@@ -1,5 +1,5 @@
 #Copyright © 2022 Marc Nahr: https://github.com/MarcPhi/godot-free-look-camera
-extends Camera3D
+extends CharacterBody3D
 
 @export_range(0, 10, 0.01) var sensitivity : float = 3
 @export_range(0, 1000, 0.1) var default_velocity : float = 5
@@ -8,10 +8,11 @@ extends Camera3D
 @export var max_speed : float = 1000
 @export var min_speed : float = 0.2
 
+@onready var cam := $Camera3D
 @onready var _velocity = default_velocity
 
 func _input(event):
-	if not current:
+	if not cam.current:
 		return
 		
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -30,7 +31,7 @@ func _input(event):
 				_velocity = clamp(_velocity / speed_scale, min_speed, max_speed)
 
 func _process(delta):
-	if not current:
+	if not cam.current:
 		return
 		
 	var direction = Vector3(
@@ -40,6 +41,8 @@ func _process(delta):
 	).normalized()
 	
 	if Input.is_physical_key_pressed(KEY_SHIFT): # boost
-		translate(direction * _velocity * delta * boost_speed_multiplier)
+		velocity = direction * _velocity * boost_speed_multiplier
 	else:
-		translate(direction * _velocity * delta)
+		velocity = direction * _velocity
+	
+	move_and_slide()
