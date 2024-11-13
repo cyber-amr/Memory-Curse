@@ -27,6 +27,7 @@ func load_options() -> void:
 	file.close()
 	
 	options = JSON.parse_string(json_str)
+	options_updated.emit()
 
 
 func save_options() -> void:
