@@ -30,7 +30,7 @@ func _input(event):
 			MOUSE_BUTTON_WHEEL_DOWN: # decrease fly velocity
 				_velocity = clamp(_velocity / speed_scale, min_speed, max_speed)
 
-func _process(delta):
+func _process(_delta):
 	if not cam.current:
 		return
 		
