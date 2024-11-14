@@ -21,6 +21,7 @@ func update():
 	# Video
 	$"%ResolutionSlider".value = Manager.options["resolution"]
 	$"%PowerSaving".button_pressed = Manager.options["power_saving"]
+	$"%FullScreen".button_pressed = Manager.options["fullscreen"]
 
 
 func change_resolution(value: float) -> void:
@@ -30,4 +31,9 @@ func change_resolution(value: float) -> void:
 
 func toggle_power_saving(toggled_on: bool) -> void:
 	Manager.options["power_saving"] = toggled_on
+	Manager.options_updated.emit()
+
+
+func toggle_fullscreen(toggled_on: bool) -> void:
+	Manager.options["fullscreen"] = toggled_on
 	Manager.options_updated.emit()
