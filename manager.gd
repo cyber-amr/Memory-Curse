@@ -9,7 +9,8 @@ signal options_updated
 
 
 var options := {
-	"resolution": 1.0
+	# Video
+	"resolution": -1
 }
 
 

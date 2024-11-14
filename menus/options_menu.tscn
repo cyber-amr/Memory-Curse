@@ -21,9 +21,10 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 
 [node name="Controls" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -54,7 +55,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Video" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -94,10 +94,9 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
-min_value = 0.05
-max_value = 1.95
-step = 0.05
-value = 1.0
+min_value = -50.0
+max_value = -1.0
+value = -1.0
 tick_count = 5
 
 [node name="Audio" type="TabBar" parent="TabContainer"]

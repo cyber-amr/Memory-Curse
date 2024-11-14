@@ -13,11 +13,12 @@ func _input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	Engine.time_scale = 1
+	update_resolution()
 	Manager.options_updated.connect(update_resolution)
 
 
 func update_resolution() -> void:
-	render_viewport.stretch_shrink = Manager.options["resolution"]
+	render_viewport.stretch_shrink = -Manager.options["resolution"]
 
 
 func pause() -> void:
