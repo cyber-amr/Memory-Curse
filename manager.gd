@@ -21,11 +21,11 @@ func _ready() -> void:
 	load_options()
 
 
-func load_options() -> void:
+func load_options() -> int:
 	var file = FileAccess.open(OPTIONS_PATH, FileAccess.READ)
 	if !file:
 		push_error("Could not open file (%s)" % [OPTIONS_PATH])
-		return
+		return ERR_FILE_CANT_OPEN
 	var json_str := file.get_as_text()
 	
 	file.close()
@@ -34,6 +34,7 @@ func load_options() -> void:
 	for k in dict.keys():
 		options[k] = dict[k]
 	options_updated.emit()
+	return OK
 
 
 func save_options() -> void:
