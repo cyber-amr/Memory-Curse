@@ -111,3 +111,19 @@ metadata/_edit_lock_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 50, 0)
 shape = SubResource("BoxShape3D_ircnx")
 metadata/_edit_lock_ = true
+
+[node name="UI" type="Node" parent="."]
+
+[node name="Pause" type="Button" parent="UI"]
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 40.0
+grow_horizontal = 0
+text = "❚❚"
+
+[connection signal="pressed" from="UI/Pause" to="." method="pause"]
