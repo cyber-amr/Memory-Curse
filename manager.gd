@@ -16,9 +16,9 @@ var options := {
 
 
 func _ready() -> void:
-	apply_options()
 	options_updated.connect(apply_options)
-	load_options()
+	if !load_options():
+		apply_options()
 
 
 func load_options() -> int:
