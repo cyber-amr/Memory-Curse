@@ -10,11 +10,14 @@ signal options_updated
 
 var options := {
 	# Video
-	"resolution": -1
+	"resolution": -1,
+	"power_saving": false
 }
 
 
 func _ready() -> void:
+	apply_options()
+	options_updated.connect(apply_options)
 	load_options()
 
 
@@ -43,6 +46,10 @@ func save_options() -> void:
 		return
 	file.store_line(json_str)
 	file.close()
+
+
+func apply_options():
+	OS.low_processor_usage_mode = options["power_saving"]
 
 
 func new_unit(id: String) -> Unit:

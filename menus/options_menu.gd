@@ -20,8 +20,14 @@ func back():
 func update():
 	# Video
 	$"%ResolutionSlider".value = Manager.options["resolution"]
+	$"%PowerSaving".button_pressed = Manager.options["power_saving"]
 
 
 func change_resolution(value: float) -> void:
 	Manager.options["resolution"] = value
+	Manager.options_updated.emit()
+
+
+func toggle_power_saving(toggled_on: bool) -> void:
+	Manager.options["power_saving"] = toggled_on
 	Manager.options_updated.emit()
