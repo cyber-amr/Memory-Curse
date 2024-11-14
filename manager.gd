@@ -30,7 +30,9 @@ func load_options() -> void:
 	
 	file.close()
 	
-	options = JSON.parse_string(json_str)
+	var dict : Dictionary = JSON.parse_string(json_str)
+	for k in dict.keys():
+		options[k] = dict[k]
 	options_updated.emit()
 
 
