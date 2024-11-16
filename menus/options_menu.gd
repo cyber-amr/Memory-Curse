@@ -22,12 +22,40 @@ func reset():
 
 
 func update():
+	# Controls
+	$"%ZoomSpeed".value = Manager.options["zoom_speed"]
+	$"%RotateSpeed".value = Manager.options["rotate_speed"]
+	$"%Sensitivity".value = Manager.options["sensitivity"]
+	$"%EnableDamping".button_pressed = Manager.options["enable_damping"]
+
 	# Video
 	$"%ResolutionSlider".value = Manager.options["resolution"]
 	$"%PowerSaving".button_pressed = Manager.options["power_saving"]
 	$"%FullScreen".button_pressed = Manager.options["fullscreen"]
 
 
+# Controls
+func change_zoom_speed(value: float) -> void:
+	Manager.options["zoom_speed"] = value
+	Manager.options_updated.emit()
+
+
+func change_sensitivity(value: float) -> void:
+	Manager.options["sensitivity"] = value
+	Manager.options_updated.emit()
+
+
+func change_rotate_speed(value: float) -> void:
+	Manager.options["rotate_speed"] = value
+	Manager.options_updated.emit()
+
+
+func toggle_enable_damping(toggled_on: bool) -> void:
+	Manager.options["enable_damping"] = toggled_on
+	Manager.options_updated.emit()
+
+
+# Video
 func change_resolution(value: float) -> void:
 	Manager.options["resolution"] = value
 	Manager.options_updated.emit()
