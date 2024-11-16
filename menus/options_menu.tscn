@@ -155,7 +155,23 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Back"
 
+[node name="Reset" type="Button" parent="."]
+custom_minimum_size = Vector2(64, 32)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 286.0
+offset_top = -265.0
+offset_right = 350.0
+offset_bottom = -233.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Reset"
+
 [connection signal="toggled" from="TabContainer/Video/ScrollContainer/HSplitContainer/VBoxContainer/PowerSaving" to="." method="toggle_power_saving"]
 [connection signal="value_changed" from="TabContainer/Video/ScrollContainer/HSplitContainer/VBoxContainer2/ResolutionSlider" to="." method="change_resolution"]
 [connection signal="toggled" from="TabContainer/Video/ScrollContainer/HSplitContainer/VBoxContainer2/FullScreen" to="." method="toggle_fullscreen"]
 [connection signal="pressed" from="Back" to="." method="back"]
+[connection signal="pressed" from="Reset" to="." method="reset"]

@@ -17,6 +17,10 @@ func back():
 	queue_free()
 
 
+func reset():
+	Manager.reset_options()
+
+
 func update():
 	# Video
 	$"%ResolutionSlider".value = Manager.options["resolution"]

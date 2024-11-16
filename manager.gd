@@ -47,6 +47,13 @@ func save_options() -> void:
 	file.close()
 
 
+func reset_options() -> void:
+	options = get_default_options()
+	options_updated.emit()
+	
+	DirAccess.remove_absolute(OPTIONS_PATH)
+
+
 func apply_options():
 	OS.low_processor_usage_mode = options["power_saving"]
 	get_window().set_mode(Window.MODE_FULLSCREEN if options["fullscreen"] else Window.MODE_WINDOWED)
