@@ -8,12 +8,7 @@ const OPTIONS_PATH := "user://config/options.json"
 signal options_updated
 
 
-var options := {
-	# Video
-	"resolution": -1,
-	"power_saving": false,
-	"fullscreen": true
-}
+var options := get_default_options()
 
 
 func _ready() -> void:
@@ -55,6 +50,21 @@ func save_options() -> void:
 func apply_options():
 	OS.low_processor_usage_mode = options["power_saving"]
 	get_window().set_mode(Window.MODE_FULLSCREEN if options["fullscreen"] else Window.MODE_WINDOWED)
+
+
+func get_default_options() -> Dictionary:
+	var dict := {
+		# Controls
+		"enable_damping": true,
+		"zoom_speed": 1,
+		"sensitivity": 1,
+		"rotate_speed": 1,
+		# Video
+		"resolution": -1,
+		"power_saving": false,
+		"fullscreen": true
+	}
+	return dict
 
 
 func new_unit(id: String) -> Unit:
