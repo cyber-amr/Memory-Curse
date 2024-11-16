@@ -58,6 +58,7 @@ render_target_update_mode = 4
 [node name="OrbitCamera" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 current = true
 script = ExtResource("2_1gxlm")
+min_polar_angle = 0.05
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_u0s1g")
