@@ -30,12 +30,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action("rotate_drag"):
 		dragging = event.is_pressed()
 	
+	azimuth_rotate = 0
+	polar_rotate = 0
 	if event is InputEventMouseMotion && dragging:
-		azimuth_rotate = 0.25 * Manager.options["sensitivity"] * -event.relative.x
-		polar_rotate = 0.25 * Manager.options["sensitivity"] * event.relative.y
+		azimuth_rotate += 0.25 * Manager.options["sensitivity"] * -event.relative.x
+		polar_rotate += 0.25 * Manager.options["sensitivity"] * event.relative.y
 	else:
-		azimuth_rotate = 3 * Manager.options["rotate_speed"] * (event.get_action_strength("rotate_right") - event.get_action_strength("rotate_left"))
-		polar_rotate = 1.5 * Manager.options["rotate_speed"] * (event.get_action_strength("rotate_up") - event.get_action_strength("rotate_down"))
+		azimuth_rotate += 3 * Manager.options["rotate_speed"] * (event.get_action_strength("rotate_right") - event.get_action_strength("rotate_left"))
+		polar_rotate += 1.5 * Manager.options["rotate_speed"] * (event.get_action_strength("rotate_up") - event.get_action_strength("rotate_down"))
 
 
 func _process(delta: float) -> void:
