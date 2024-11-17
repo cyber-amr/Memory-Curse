@@ -23,15 +23,16 @@ ambient_light_color = Color(1, 1, 1, 1)
 reflected_light_source = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uy40p"]
-shading_mode = 0
-albedo_color = Color(0.1148, 0.21, 0.042, 1)
+shading_mode = 2
+albedo_color = Color(0.0588235, 0.211765, 0.0745098, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_1v0wt"]
 material = SubResource("StandardMaterial3D_uy40p")
 size = Vector3(10000, 1, 5000)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhueo"]
-albedo_color = Color(0.211765, 0.113725, 0.0431373, 1)
+shading_mode = 2
+albedo_color = Color(0.211765, 0.0588235, 0.0745098, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dtcge"]
 material = SubResource("StandardMaterial3D_vhueo")
