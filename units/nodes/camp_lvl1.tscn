@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck8g3t3kuhmw3"]
+
+[ext_resource type="Script" path="res://units/Spawner.gd" id="1_d7akf"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f0j2w"]
+points = PackedVector3Array(-1, -1, -1, 0.0293034, 0.941393, 0.941393, 0.147043, 0.705915, 0.94122, -1, -1, 1, 1, -1, -1, -0.0293034, 0.941393, -0.941393, 1, -1, 1, -0.0293034, 0.941393, 0.941393, 0.0293034, 0.941393, -0.941393)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8pluc"]
+shading_mode = 2
+albedo_color = Color(0.75, 0.75, 0.75, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_6bb8y"]
+material = SubResource("StandardMaterial3D_8pluc")
+size = Vector3(2, 2, 2)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hevaf"]
+radius = 3.0
+
+[node name="CampLVL1" type="CharacterBody3D" node_paths=PackedStringArray("bounds_area")]
+script = ExtResource("1_d7akf")
+unit = "archer"
+spawn_point = Vector3(0, 0, -2)
+bounds_area = NodePath("Area3D")
+health = 1000
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("ConvexPolygonShape3D_f0j2w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("PrismMesh_6bb8y")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_hevaf")
