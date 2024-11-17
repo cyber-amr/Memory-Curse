@@ -2,8 +2,11 @@ class_name OrbitCamera
 extends Camera3D
 
 
+@export var limit_azimuth: bool = false
 @export var damping_factor: float = 0.1
 
+@export var min_azimuth_angle: float = -1.5707 # deg2rad(-89.9945.0)
+@export var max_azimuth_angle: float = 1.5707 # deg2rad( 89.9945.0)
 @export var min_polar_angle: float = -1.5707 # deg2rad(-89.9945.0)
 @export var max_polar_angle: float = 1.5707 # deg2rad( 89.9945.0)
 @export var min_zoom_distance: float = 5.0
@@ -38,7 +41,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	radius = clamp(radius + (delta * zoom), min_zoom_distance, max_zoom_distance)
 
-	azimuth_angle += delta * azimuth_rotate
+	azimuth_angle = clamp(azimuth_angle + (delta * azimuth_rotate), min_azimuth_angle, max_azimuth_angle) if limit_azimuth else azimuth_angle + (delta * azimuth_rotate)
 	polar_angle = clamp(polar_angle + (delta * polar_rotate), min_polar_angle, max_polar_angle)
 
 	azimuth_rotate = 3 * Manager.options["rotate_speed"] * Input.get_axis("rotate_right", "rotate_left")
