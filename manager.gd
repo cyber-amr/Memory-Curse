@@ -9,6 +9,7 @@ signal options_updated
 
 
 var options := get_default_options()
+var game : Game
 
 
 func _ready() -> void:

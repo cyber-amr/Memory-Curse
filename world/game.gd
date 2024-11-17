@@ -16,6 +16,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
+	Manager.game = self
 	Engine.time_scale = 1
 	update_resolution()
 	Manager.options_updated.connect(update_resolution)
