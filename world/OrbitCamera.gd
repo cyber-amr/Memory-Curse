@@ -2,7 +2,7 @@ class_name OrbitCamera
 extends Camera3D
 
 
-@export var damping_factor: float =  0.1
+@export var damping_factor: float = 0.1
 
 @export var min_polar_angle: float = -1.5707 # deg2rad(-89.9945.0)
 @export var max_polar_angle: float = 1.5707 # deg2rad( 89.9945.0)
@@ -30,36 +30,31 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action("rotate_drag"):
 		dragging = event.is_pressed()
 	
-	azimuth_rotate = 0
-	polar_rotate = 0
 	if event is InputEventMouseMotion && dragging:
 		azimuth_rotate += 0.25 * Manager.options["sensitivity"] * -event.relative.x
-		polar_rotate += 0.25 * Manager.options["sensitivity"] * event.relative.y
-	else:
-		azimuth_rotate += 3 * Manager.options["rotate_speed"] * (event.get_action_strength("rotate_right") - event.get_action_strength("rotate_left"))
-		polar_rotate += 1.5 * Manager.options["rotate_speed"] * (event.get_action_strength("rotate_up") - event.get_action_strength("rotate_down"))
+		polar_rotate += 0.2 * Manager.options["sensitivity"] * event.relative.y
 
 
 func _process(delta: float) -> void:
 	radius = clamp(radius + (delta * zoom), min_zoom_distance, max_zoom_distance)
 
 	azimuth_angle += delta * azimuth_rotate
-	polar_angle = clamp(polar_angle + (delta * polar_rotate * 0.5), min_polar_angle, max_polar_angle)
+	polar_angle = clamp(polar_angle + (delta * polar_rotate), min_polar_angle, max_polar_angle)
 
-	_position = Vector3(
+	azimuth_rotate = 3 * Manager.options["rotate_speed"] * Input.get_axis("rotate_right", "rotate_left")
+	polar_rotate = 1.5 * Manager.options["rotate_speed"] * Input.get_axis("rotate_up", "rotate_down")
+
+	if target:
+		origin = lerp(origin, target.position, damping_factor) if Manager.options["enable_damping"] else target.position
+	
+	var next_position = Vector3(
 		origin.x + radius * cos(polar_angle) * sin(azimuth_angle),
 		origin.y + radius * sin(polar_angle),
 		origin.z + radius * cos(polar_angle) * cos(azimuth_angle)
 	)
+	_position = lerp(_position, next_position, damping_factor) if Manager.options["enable_damping"] else next_position
 
-	if Manager.options["enable_damping"]:
-		global_transform.origin += (_position - global_transform.origin) * damping_factor
-		if target:
-			origin = lerp(origin, target.position, damping_factor)
-	else:
-		global_transform.origin = _position
-		if target:
-			origin = target.position
+	global_transform.origin = _position
 
 	if origin != global_transform.origin:
 		look_at(origin)
