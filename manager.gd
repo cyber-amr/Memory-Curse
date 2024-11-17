@@ -66,6 +66,7 @@ func get_default_options() -> Dictionary:
 		"zoom_speed": 1,
 		"sensitivity": 1,
 		"rotate_speed": 1,
+		"camera_speed": 1,
 		# Video
 		"resolution": -1,
 		"power_saving": false,
