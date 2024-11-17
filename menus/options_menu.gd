@@ -25,6 +25,7 @@ func update():
 	# Controls
 	$"%ZoomSpeed".value = Manager.options["zoom_speed"]
 	$"%RotateSpeed".value = Manager.options["rotate_speed"]
+	$"%CameraSpeed".value = Manager.options["camera_speed"]
 	$"%Sensitivity".value = Manager.options["sensitivity"]
 	$"%EnableDamping".button_pressed = Manager.options["enable_damping"]
 
@@ -47,6 +48,11 @@ func change_sensitivity(value: float) -> void:
 
 func change_rotate_speed(value: float) -> void:
 	Manager.options["rotate_speed"] = value
+	Manager.options_updated.emit()
+
+
+func change_camera_speed(value: float) -> void:
+	Manager.options["camera_speed"] = value
 	Manager.options_updated.emit()
 
 

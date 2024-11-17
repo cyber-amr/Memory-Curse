@@ -61,6 +61,12 @@ layout_mode = 2
 text = "Rotate Speed"
 vertical_alignment = 1
 
+[node name="CameraSpeedLabel" type="Label" parent="TabContainer/Controls/ScrollContainer/HSplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+text = "Camera Movement Speed"
+vertical_alignment = 1
+
 [node name="SensitivityLabel" type="Label" parent="TabContainer/Controls/ScrollContainer/HSplitContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
@@ -88,6 +94,16 @@ value = 1.0
 tick_count = 4
 
 [node name="RotateSpeed" type="HSlider" parent="TabContainer/Controls/ScrollContainer/HSplitContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+min_value = 0.1
+max_value = 2.75
+step = 0.05
+value = 1.0
+tick_count = 4
+
+[node name="CameraSpeed" type="HSlider" parent="TabContainer/Controls/ScrollContainer/HSplitContainer/VBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
@@ -227,6 +243,7 @@ text = "Reset"
 [connection signal="toggled" from="TabContainer/Controls/ScrollContainer/HSplitContainer/VBoxContainer/EnableDamping" to="." method="toggle_enable_damping"]
 [connection signal="value_changed" from="TabContainer/Controls/ScrollContainer/HSplitContainer/VBoxContainer2/ZoomSpeed" to="." method="change_zoom_speed"]
 [connection signal="value_changed" from="TabContainer/Controls/ScrollContainer/HSplitContainer/VBoxContainer2/RotateSpeed" to="." method="change_rotate_speed"]
+[connection signal="value_changed" from="TabContainer/Controls/ScrollContainer/HSplitContainer/VBoxContainer2/CameraSpeed" to="." method="change_camera_speed"]
 [connection signal="value_changed" from="TabContainer/Controls/ScrollContainer/HSplitContainer/VBoxContainer2/Sensitivity" to="." method="change_sensitivity"]
 [connection signal="toggled" from="TabContainer/Video/ScrollContainer/HSplitContainer/VBoxContainer/PowerSaving" to="." method="toggle_power_saving"]
 [connection signal="value_changed" from="TabContainer/Video/ScrollContainer/HSplitContainer/VBoxContainer2/ResolutionSlider" to="." method="change_resolution"]
