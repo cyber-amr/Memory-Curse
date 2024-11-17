@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bhlo1oob8kfxh"]
+[gd_scene load_steps=13 format=3 uid="uid://bhlo1oob8kfxh"]
 
 [ext_resource type="Script" path="res://world/game.gd" id="1_c2l74"]
 [ext_resource type="Script" path="res://world/OrbitCamera.gd" id="2_1gxlm"]
-[ext_resource type="PackedScene" uid="uid://ck8g3t3kuhmw3" path="res://units/nodes/camp_lvl1.tscn" id="3_60cjh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wswas"]
 sky_horizon_color = Color(0.509804, 0.572549, 0.678431, 1)
@@ -65,12 +64,14 @@ render_target_update_mode = 4
 
 [node name="OrbitCamera" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 current = true
 script = ExtResource("2_1gxlm")
 limit_azimuth = true
 min_azimuth_angle = -0.785
 max_azimuth_angle = 0.785
 min_polar_angle = 0.05
+polar_angle = 0.5
 azimuth_angle = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -134,7 +135,5 @@ offset_right = -8.0
 offset_bottom = 40.0
 grow_horizontal = 0
 text = "❚❚"
-
-[node name="Camp1" parent="." instance=ExtResource("3_60cjh")]
 
 [connection signal="pressed" from="UI/Pause" to="." method="pause"]
