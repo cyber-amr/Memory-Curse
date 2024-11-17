@@ -19,5 +19,6 @@ func _ready() -> void:
 
 func spawn() -> void:
 	var u := Manager.new_unit(unit)
+	u.is_enemy = is_enemy
 	get_parent().add_child(u)
 	u.global_position = global_position + spawn_point
