@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://units/Spawner.gd" id="1_d7akf"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f0j2w"]
-points = PackedVector3Array(-1, -1, -1, 0.0293034, 0.941393, 0.941393, 0.147043, 0.705915, 0.94122, -1, -1, 1, 1, -1, -1, -0.0293034, 0.941393, -0.941393, 1, -1, 1, -0.0293034, 0.941393, 0.941393, 0.0293034, 0.941393, -0.941393)
+points = PackedVector3Array(-1, -1, -1, 0, 1, 1, 0, 1, 1, -1, -1, 1, 0, -1, 2, 1, -1, -1, 0, 1, -1, 0, -1, -2, 1, -1, 1, 0, 1, 1, 0, 1, -1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8pluc"]
 shading_mode = 2
